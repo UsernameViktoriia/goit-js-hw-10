@@ -13,7 +13,9 @@ input.addEventListener(
   debounce(e => {
     infoEl.innerHTML = '';
     ulEl.innerHTML = '';
-    fetchCountries(e.target.value.trim())
+    const search = e.target.value.trim();
+    if (!search) return;
+    fetchCountries(search)
       .then(data => {
         if (data.length === 1) {
           appendMarkupInfo(data[0]);
